@@ -1,19 +1,24 @@
 import React, { useState, Fragment} from 'react'
 import Square from './Square'
 import Block from './Block'
+import styled from 'styled-components'
 
 function Board(props) {
   const boardSize = props.boardSize
   const [blocks, setBlocks] = useState(Array(boardSize*boardSize).fill(null))
   const [xIsNext, setXIsNext] = useState(true)
   
-  const style = {
-    display: 'grid',
-    gridTemplateColumns: `repeat(${boardSize}, 1fr)`,
-    gridGap: '1px',
-    margin: '100px'
-  }
-  
+  interface SquareValue {
+    boardSize: String
+}
+
+const Square = styled.div<SquareValue>`
+    display: grid;
+    grid-template-columns: repeat(${boardSize}, 1fr);
+    margin: 100px;
+    grid-gap: 1px;
+`
+
   // generate n * n blocks
   function renderBlocks(n:any) {
     const genBlocks = []
@@ -112,9 +117,9 @@ function Board(props) {
   return (
     <div>
       <div className="status">{status}</div>
-      <div className="board" style={style}>
-        {/* { renderBlocks(boardSize)} */}
-      </div>
+      <Square>
+        { renderBlocks(boardSize)}
+      </Square>
     </div>
   )
 }

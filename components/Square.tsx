@@ -2,7 +2,12 @@ import styled from 'styled-components'
 
 type Player = 'X' | 'O' | 'BOTH' | null
 
-const SquareBtn = styled.button`
+interface SquareValue {
+    squareValue: String
+    onClick: () => void
+}
+
+const SquareBtn = styled.button<SquareValue>`
     width: 100px;
     height: 100px;
     font-size: 5rem;

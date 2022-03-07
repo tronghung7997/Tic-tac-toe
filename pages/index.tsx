@@ -24,7 +24,7 @@ const Home: NextPage = () => {
       </Head>
 
       <main className={styles.main}>
-        <div>
+        <div className="App">
           {startGame ? (
             <div className="game-board">
               <Board boardSize={boardSize} />
@@ -32,6 +32,7 @@ const Home: NextPage = () => {
           ) : (
             <p>Choose board size to start game</p>
           )}
+
           <label>Enter board size: </label>
           <input
             type="text"
